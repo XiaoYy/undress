@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.has_rdoc          = true
   s.rubygems_version  = "1.3.1"
 
-  s.add_dependency "hpricot"
+  s.add_dependency "nokogiri"
 
   if s.respond_to?(:add_development_dependency)
     s.add_development_dependency "sr-mg"

@@ -1,4 +1,4 @@
-require "hpricot"
+require "nokogiri"
 require File.expand_path(File.dirname(__FILE__) + "/core_ext/object")
 require File.expand_path(File.dirname(__FILE__) + "/undress/grammar")
 
@@ -6,8 +6,8 @@ require File.expand_path(File.dirname(__FILE__) + "/undress/grammar")
 # object. You can pass an optional hash of options, which will be forwarded
 # straight to Hpricot. Check it's
 # documentation[http://code.whytheluckystiff.net/doc/hpricot] for details.
-def Undress(html, options={})
-  Undress::Document.new(html, options)
+def Undress(html)
+  Undress::Document.new(html)
 end
 
 module Undress
@@ -20,8 +20,8 @@ module Undress
   end
 
   class Document #:nodoc:
-    def initialize(html, options)
-      @doc = Hpricot(html, options)
+    def initialize(html)
+      @doc = Nokogiri::XML.parse(html)
     end
 
     def self.add_markup(name, grammar)
